@@ -40,7 +40,7 @@ std::string getPackageName() {
 
 std::string getConfigDir() {
     std::string pkgName = getPackageName();
-    std::string primary = "/storage/emulated/0/Android/data/" + pkgName + "/files/mods/ForceCloseOreUI/";
+    std::string primary = "/sdcard/0/Android/data/" + pkgName + "/files/mods/ForceCloseOreUI/";
     std::error_code ec;
     fs::create_directories(primary, ec); 
     return primary;
@@ -102,14 +102,7 @@ void hook_OreUi_init(OreUi &a1, void *a2, void *a3, void *a4, void *a5, void *a6
 
 // --- THE NEWEST ARM64 SIGNATURES ---
 const std::vector<const char*> OREUI_PATTERNS = {
-    // Newest Official Pattern from Author
-    "? ? ? D1 ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? 91 ? ? ? D5 F7 03 05 AA FB 03 03 2A",
-    
-    // Older 1.26.20 Fallback
-    "? ? ? D1 ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? 91 ? ? ? D5 FB 03 00 AA F5 03 07 AA",
-    
-    // Legacy Fallbacks
-    "? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? A9 FD 03 00 91 ? ? ? D1 ? ? ? D5 FA 03 00 AA F5 03 07 AA"
+    "? ? ? D1 ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? A9 ? ? ? 91 ? ? ? D5 FB 03 00 AA F5 03 07 AA"
 };
 
 static uintptr_t ResolveSignature(const char* sig) {
